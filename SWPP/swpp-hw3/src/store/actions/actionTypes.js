@@ -1,0 +1,11 @@
+export const GET_ALL_ARTICLE = "GET_ALL_ARTICLE";
+export const GET_ALL_COMMENT = "GET_ALL_COMMENT";
+export const ADD_ARTICLE = "ADD_ARTICLE";
+export const GET_ARTICLE = "GET_ARTICLE";
+export const EDIT_ARTICLE = "EDIT_ARTICLE";
+export const TOGGLE_DONE = "TOGGLE_DONE";
+export const DELETE_ARTICLE = "DELETE_ARTICLE";
+export const ADD_COMMENT = "ADD_COMMENT";
+export const GET_COMMENT = "GET_COMMENT";
+export const EDIT_COMMENT = "EDIT_COMMENT";
+export const DELETE_COMMENT = "DELETE_COMMENT";
