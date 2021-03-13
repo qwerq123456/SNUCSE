@@ -52,3 +52,101 @@ chapter2 - recursion
 chapter 3 - abstraction
 ------------
 
+chapter 4 - Linked List
+--------------------
+
+- array로 구현할때
+  - 간단하게 구현 가능
+  - overflow 처리 불가능
+  - insert/delete에서 shift 작업 필요
+
+- 일반적인 Linked List
+  - shift overhead 없음
+  - no overflow
+  - linking에 overhead 발생
+
+- 구현
+  - setItem : node에 값 넣기
+  - getItem : node에 저장된 값 찾기
+  - setNext : next노드 설정
+  - getNext : next노드 불러오기
+
+- 삭제 
+  - curr, prev라는 두 노드 가정
+  - curr는 삭제하려는 노드, prev는 그 앞노드 가리키게 설정
+  - prev.setNext(curr.getNext()); 실행하면 curr이 가리키는 node가 리스트에서 사라짐
+  - 맨 앞 노드 삭제시엔 head = curr.getNext(); 실행하면 됨
+
+- 삽입
+  - curr, prev라는 두 노드 가정
+  - prev, curr사이에 삽입
+  - newNode.setNext(curr), prev.setNext(newNode)실행
+  - 첫노드 앞에 삽입 :  newNode.setNext(curr), head = newNode;
+  - 마지막 노드 뒤에 삽입 : 다른 삽입과 똑같이 하지만, curr이 null일때로 따로 처리하면 된다. 
+
+- 다른 Linked List
+  - Doubly Linked List
+    - 한 노드가 앞뒤의 노드를 가리킴
+
+  - circular Linked List
+    - 마지막 노드가 head를 가리킴
+
+chapter 5 - Recursion 2
+------------------
+- Backtracking
+  - 반대순서로 따라가면서 처리하는 방법
+  - 예시 : Eight-Queens Problem
+
+- Palinidrome Determination
+  - 문자열이 대칭인지 판단
+  ```
+  isPalindrome(w){
+    if(w.length == 0or1) return true;
+    else if(first and last is same){
+      w=w-first-last;
+      return isPalindrome(w);
+    }
+    else return false;
+  }
+  
+
+- Infix, Prefix, Postfix
+
+  - Infix
+    - 일반적 표기법
+    - 계산법 : Postfix로 바꾼뒤 계산
+  
+  - Postfix 
+    - 연산자를 숫자 뒤에 표기
+    - 계산법 : 스텍을 이용하여 계산함
+      - 숫자입력시 push 시행
+      - 연산자 오면 pop pop cal push 시행
+      - 입력이 끝나면 계산 종료
+    - Infix to Postfix
+      - infix표기에서 괄호를 하나씩 지우면서 연산자를 뒤로 옮김
+
+  - Prefix
+    - 연산자를 숫자 앞에 표기
+    - 계산법 : 스텍을 이용하여 계산함
+      - 연산자 입력시 push 시행
+      - 숫자 입력시 pop pop cal push 시행
+      - 입력이 끝나면 계산 종료
+    - Infix to Prefix
+      - infix표기에서 괄호를 하나씩 지우면서 연산자를 앞으로 옮김
+
+    - Determination of Prefix
+      - 어렵네 시발...다시 이해 해보기
+
+    - Prefix to Postfix
+      - (operator)-(prefix)-(prefix) -> (postfix)-(postfix)-(operator)
+      ```
+      convert(pre){
+            first = pre.firstcharacter;
+            pre.deletefirst;
+            if(first is identifier) return first;
+            else{
+              post1 = convert(pre);
+              post2 = convert(pre);
+              return post1+post2+first;
+            }
+          }
