@@ -135,7 +135,7 @@ chapter 5 - Recursion 2
       - infix표기에서 괄호를 하나씩 지우면서 연산자를 앞으로 옮김
 
     - Determination of Prefix
-      - 어렵네 시발...다시 이해 해보기
+      - prefix의 정의 : 숫자 or operator,prefix,prefix이다. 이걸 이용해서 어째저째하면댐 이걸 모르겠음 시발 아직도 모르겠다.
 
     - Prefix to Postfix
       - (operator)-(prefix)-(prefix) -> (postfix)-(postfix)-(operator)
@@ -150,3 +150,59 @@ chapter 5 - Recursion 2
               return post1+post2+first;
             }
           }
+
+
+chapter 6 - Stack
+----------------
+- Stack
+  - Removes the most recently added item
+  - LIFO (Last-In-First-Out)
+  - The only access to the stack is
+the most-recently added item
+- 구현
+  - isEmpty() : 스텍이 비어있으면 true, 아니면 false를 리턴함
+  - push(Object newItem) : newItem을 스텍에 넣음
+  - pop() : top에 있는 object를 스텍에서 제거하고 그 object를 리턴함
+  - peek() : top에 있는 object를 리턴함, stack을 변화시키지 않음
+  - isFull() : arraybasedstack에서는 크기에 제한이 있기때문에 그때 사용
+
+- Postfix 계산
+  - chapter 5 에서 정리 해놓음
+
+- DFS에서 많이 사용. 
+  - chapter 15 graph 알고리즘 부분에서 다룰 예정
+
+
+chapter 7 - Queue
+------------
+
+- Queue
+  - Removes the least recently added item
+  - FIFO (First-In-First-Out)
+  - The only accessible item in the queue is the earliest added item
+  - 
+
+- 구현
+  - isEmpty() : 큐가 비어있으면 true, 아니면 false 리턴
+  - enqueue(Object newItem) : newItem을 큐에 넣음
+  - dequeue() : front에 있는 object를 삭제하고 그 object를 리턴함
+  - peek() : front에 있는 object리턴, queue를 변화시키지 않음
+
+- Circular queue
+  - front가 back을 지나가면 queue가 empty
+  - back이 front를 따라잡으면 queue가 full
+  - stack과 달리 queue를 array로 구현하면, enqueue,dequeue를 여러번 실행하고 나면 저장공간이 부족해진다. 이런 단점을 해결하기 위한 수단이다. 
+
+- BFS에서 많이 사용
+  - chapter 15에서 다룰 예정
+
+- awesomepiece 면접 질문
+  - Stack, Queue, Tree 에 대해서 설명 해보세요
+  - Stack으로 Queue 만들려면 어케할까요?
+    1. 두개의 stack을 이용 한다
+    2. enqueue : 1번 stack에 push
+    3. dequeue : 1번 stack이 empty될때까지 1번 pop, 2번 push를 반복. 그후 2번 stack에서 pop
+    4. ~~이게 면접보고 와서 샤워하다 생각나냐 꼴받네;;~~ 물론 아니면... 말고... 일단 내생각엔 이거 같음
+
+
+    
