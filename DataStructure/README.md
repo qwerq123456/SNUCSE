@@ -118,6 +118,7 @@ chapter 5 - Recursion 2
   
   - Postfix 
     - 연산자를 숫자 뒤에 표기
+      - 숫자 or postfix+postfix+operator
     - 계산법 : 스텍을 이용하여 계산함
       - 숫자입력시 push 시행
       - 연산자 오면 pop pop cal push 시행
@@ -127,6 +128,7 @@ chapter 5 - Recursion 2
 
   - Prefix
     - 연산자를 숫자 앞에 표기
+      - 숫자 or operator+prefix+prefix
     - 계산법 : 스텍을 이용하여 계산함
       - 연산자 입력시 push 시행
       - 숫자 입력시 pop pop cal push 시행
@@ -135,7 +137,25 @@ chapter 5 - Recursion 2
       - infix표기에서 괄호를 하나씩 지우면서 연산자를 앞으로 옮김
 
     - Determination of Prefix
-      - prefix의 정의 : 숫자 or operator,prefix,prefix이다. 이걸 이용해서 어째저째하면댐 이걸 모르겠음 시발 아직도 모르겠다.
+      - prefix가 identifier or operator+prefix+prefix임을 이용
+      ```
+      isPre(A,1,n){                     //return true if String A[1...n] is prefix 
+        lastChar = endPre(A,1,n);       
+        if(lastChar == n)return true;   //-1 => not prefix, 
+                                        //not n => operator + prefix1 + prefix2 + other thing
+        else return false;
+      }
+
+      endPre(A,first,last){
+        if(first>last) return -1;
+        if(A[first] == identifier) return first;  // A[first] == identifier case
+        else if (A[first] == operator){           // A[first...last] == operator + prefix1 + prefix2 case
+          firstEnd = endPre(A,first+1,last);      // prefix1
+          if(firstEnd = -1)return -1;
+          else return endPre(A,firstEnd+1,last);  // prefix2
+        }
+        else return -1;
+      }
 
     - Prefix to Postfix
       - (operator)-(prefix)-(prefix) -> (postfix)-(postfix)-(operator)
