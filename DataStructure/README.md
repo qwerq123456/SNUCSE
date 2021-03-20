@@ -225,4 +225,118 @@ chapter 7 - Queue
     4. ~~이게 면접보고 와서 샤워하다 생각나냐 꼴받네;;~~ 물론 아니면... 말고... 일단 내생각엔 이거 같음
 
 
+chapter 8 Algorithm Efficiency & Sorting
+--------------
+- O() : Big-Oh
+  - upper-bounded by cf(n)
+  - 정의
+    - O(f(n)) = { g(n) | ∃c > 0, n0 ≥ 0 s.t.∀n ≥ n0, cf(n) ≥ g(n) }
+    - g(n) ∈ O(f(n))이 맞지만 관행적으로 g(n) = O(f(n))이라고 쓴다.
+
+- Ω(f(n))
+  - 적어도 f(n)의 비율로 증가하는 함수
+  - O(f(n))과 반대 의미
+
+- Θ(f(n))
+  - f(n)의 비율로 증가하는 함수
+  - O(f(n))과 Ω(f(n))를 동시에 만족 (Θ(f(n)) = O(f(n)) ∩ Ω(f(n)))
+
+- Running-Time Analysis
+  - worst case
+    - 입력중 가장 느린 케이스
+
+  - average case
+    - 모든 입력의 평균 시간
+    - 분석하기 어려운 경우가 많음
+
+  - best case
+    - 입력중 가장 빠른 케이스
+    - 대부분의 경우에 의미 없음...
+
+- Sorting Algorithms
+  - Selection sort
+    - 최대값을 찾아서 뒤로 옮긴다. 이것을 n회 시행
+    - n<sup>2
+
+  - Bubble sort
+    - 앞부터 두개씩 비교하여 정렬
+    - n<sup>2
+
+  - Insertion Sort
+    - 앞의 k개가 정렬 되어있다면, k+1번째의 자리를 찾는것은 쉬운 점을 이용
+    - n<sup>2
+
+  - Merge sort
+    - 정렬된 두 수열을 합치는것은 쉽다는 점을 이용함
+    - 수열을 반씩 쪼개서 크기가 1이 될때까지 쪼갠후 그들을 다시 합쳐나간다
+    - 쪼갠 두 수열을 합치는 과정에서 보조 어레이가 필요
+    - nlogn
+    - ```
+      mergeSort(S){
+        S1 = first half of S;
+        S2 = second half of S;
+        mergeSort(S1);
+        mergeSort(S2);
+        merge(S1,S2);
+      }
+      merge(S1,S2){
+        //S1,S2는 정렬된 수열이므로 둘을 합치는건 어렵지 않다.
+      }
+      ```
+
+  - Quick sort
+    - pivot을 이용하여 앞뒤를 나눔
+    - Average-case : nlogn
+    - Worst-case : n<sup>2 
+       - 이미 정렬된 수열일 경우
+       - multi pivot을 이용하여 worst case 제거 가능 ex)자바의 Arrays.sort
+
+    - ```
+      QuickSort(S){
+          p = pivot of S;
+          (L,R) = partition(S,p);
+          QuickSort(L);
+          QUickSort(R);
+          return L+p+R;
+      }
+      partition(S,p){
+        //p보다 작은 값은 L로 p보다 큰값은 R로 분리;
+      }
+      ```
+
+  - Radix sort
+    - 정수의 뒷자리 부터 정렬.
+    - Stable sort
+    - kn (k는 입력값의 자릿수)
+  
+    - ```
+      radixSort(A[],k){
+        for(i=1 to k){
+          stableSort(A[],i);
+        }
+      }
+      stableSort(A[],i){
+        //i번째 자릿수로 stable sort하기
+      }
+      ```
+  - Heap Sort
+    - chapter 10 priority queue에서 정리할 예정
     
+  <br/>
+
+
+
+
+   |              |Worst Case|Average Case|
+    |--------------|-----------|------------|
+    |Selection Sort|n          |n           |
+    |Bubble Sort|n<sup>2|n<sup>2|
+    |Insertion Sort|n<sup>2|n<sup>2|
+    |Merge Sort|nlogn|nlogn|
+    |Quick Sort|n<sup>2|nlogn|
+    |Radix Sort|n|n|
+    |Heap Sort|nlogn|nlogn|
+
+
+
+
