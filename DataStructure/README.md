@@ -47,7 +47,7 @@ chapter2 - recursion
   - Θ(kn) 으로 하는 쉬운방법...(초등학생 수준이라 한다...~~열받네;;~~)
   - pivot기준으로 어레이 나누기
     - average : Θ(n)
-    - worst : Θ(n<sup>2)
+    - worst : Θ(n<sup>2</sup>)
 
 chapter 3 - abstraction
 ------------
@@ -330,13 +330,114 @@ chapter 8 Algorithm Efficiency & Sorting
    |              |Worst Case|Average Case|
     |--------------|-----------|------------|
     |Selection Sort|n          |n           |
-    |Bubble Sort|n<sup>2|n<sup>2|
-    |Insertion Sort|n<sup>2|n<sup>2|
+    |Bubble Sort|n<sup>2</sup>|n<sup>2|
+    |Insertion Sort|n<sup>2</sup>|n<sup>2|
     |Merge Sort|nlogn|nlogn|
-    |Quick Sort|n<sup>2|nlogn|
+    |Quick Sort|n<sup>2</sup>|nlogn|
     |Radix Sort|n|n|
     |Heap Sort|nlogn|nlogn|
 
 
 
+chapter 9 Tree
+--------
+- 명언 : 사실을 많이 아는 것 보다는 이론적 틀이 중요하고, 기억력 보다는 생각하는 법이 더 중요하다. - 제임스 왓슨
 
+- 정의
+  - empty or root+subtrees
+
+- 다양한 표현
+  - 사이클이 없는 연결 그래프
+  - 사이클이 없고 단순그래프의 형태를 유지하면서 간선을 추가할경우 사이클이 생긴다
+  - 연결 그래프 이고, 어떤 간선을 제거해도 연결그래프가 아니게 된다
+  - 연결 그래프 이고, 간선의 수는 정점의 수보다 하나 적다
+  - 사이클이 없고, 간선의 수는 정점의 수보다 하나 적다
+
+- Binary Tree
+  - empty or root node + two binary trees(left,right)
+
+- Binary Search Tree
+  - 각 노드d에 대하여 다음을 만족한다
+    - 모든 노드에 해당하는 값은 다르다
+    - d의 값은 left tree T<sub>L</sub>의 모든 값보다 크고, right tree T<sub>R</sub>의 모든 값보다 작다
+    - T<sub>L</sub>,T<sub>R</sub>은 모두 BST이다.
+
+- Full Binary Tree
+  - 모든 leaf node가 같은 레벨에 위치하고 leaf를 제외한 모든 node가 정확히 2개씩의 children을 갖는 tree
+  - If T is empty 
+    - height가 0 인 full binary tree
+  - If T is not empty and height is h
+    - 루트의 두 서브트리가 모두 height 가 h-1인 full binary tree일때 T가 full binary tree 이다
+
+- Complete Binary Tree
+  - height가 h 인 complete binary tree는 h-1 level까지 가득 차있고, h level은 왼쪽에서 오른쪽으로 차있을때 Complete binary tree 이다.
+
+- Treesort 
+  - 모든 값을 bst로 넣고, inorder traversal로 출력한다.
+    - Average case : nlogn
+    - worst case : n<sup>2</sup>
+
+chapter 10 Priority Queues
+---------------
+- Priority queue
+  - A dynamic data sets that support insertion, deletion, and retrieval of max element
+    - array, list, 등등으로 구현해도 다 상관없지만 heap에 비해 성능이 너무 떨어지기에 heap을 사용하는것.
+  - Deletion
+    - priority가 가장 높은 item만 delete 가능
+  - Insertion
+    - 잘 하면 됌
+  - Key값 중복 허용
+
+- Heap
+  - Complete binary tree that is 
+    - empty
+    - the key of each node is grater than or equal to the keys of both children
+  - Complete binary tree이기 때문에 array 로 생각할 수 있다.
+  - Deletion
+    - root item 지운뒤 마지막 node를 root로 옮긴후 수선(percolate down)
+  - Insertion
+    - 마지막 node에 삽입 후 수선(percolate up)
+  - Heapsort
+    - insertion, deletion이 모두 O(logn)이므로 n개의 원소를 insert후 delete하면 sorting이 완료되고, 그것은 O(nlogn)이 된다.
+
+
+chapter 11 Balanced Search Tree
+-------
+- search time은 tree의 height에 의해 결정된다. 그러므로 height를 균형있게 잡아줘야 search time이 줄어든다.
+- 종류
+  - Balanced binary search tree
+    - AVL tree, RB tree
+  - Balanced k-ary trees
+    - 2-3 tree, 2-3-4tree, B-trees
+
+- 2-3 tree
+  - B-tree중에 특별한 케이스
+  - T is a 2-3 tree of height h if
+    - T is empty(height 0)
+    - root는 3개의 sub trees를 갖는다 T<sub>L</sub>,T<sub>M</sub>,T<sub>R</sub>. 이 3개의 sub trees는 모두 height가 h-1인 2-3 tree이다.
+    - 단, root가 원소가 1개면 T<sub>R</sub>없어도 된다
+
+- 2-3-4 tree
+  - 한 노드에 3개까지 가능, 자식은 4개까지 가능
+  - binary tree로 변형하면 RB tree가 됌
+
+- RB tree
+  - 알고리즘 tree부분에 정리해놓음
+
+- AVL tree (Adelson-Velskii and Landis)
+  - left와 right의 높이 차이가 1 이하인 트리
+
+chapter 12 Hash table
+-------
+ - 알골에서 정리
+
+chapter 13 External Storage, 14 B-tree
+-------
+  - 모든 데이터를 main memory에 저장할 수 없다.
+  - disk access는 시간이 많이든다. 따라서 level이 크면 안된다.
+    - 그래서 height가 작고 최악의 경우에도 균형 유지가 되는 B-tree를 사용하게 된다.
+  - B tree 삽입 삭제는 피피티 보고 따라가기!
+
+chapter 15 그래프
+------
+  - 알고리즘에서 정리

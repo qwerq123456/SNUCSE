@@ -47,7 +47,7 @@ Chapter 2 - 알고리즘 설계와 분석의 기초
 - 점근적 분석 (Asymptotic Analysis)
     - 입력이 충분히 큰 경우에 대한 분석
 
-- 점근적 표기번 (Asymptotic Notations)
+- 점근적 표기법 (Asymptotic Notations)
     - 자료구조 필기 참고
     - O( g(n) )
         - Tight or loose upper bound
@@ -92,7 +92,7 @@ Chapter 3 - 점화식과 알고리즘 복잡도 분석
 
 Chapter 4 - 정렬
 ------
-- 대부분 O(n<sup>2), O(nlogn)이지만 특수한 조건의 input이 들어올땐 O(n)
+- 대부분 O(n<sup>2</sup>), O(nlogn)이지만 특수한 조건의 input이 들어올땐 O(n)
 - Sort
     - Selection Sort
     - Bubble Sort
